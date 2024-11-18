@@ -1,69 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <title>Labakker – en slags blog</title>
 </head>
+
 <body>
     <header>
         <nav>
-            <center><h3>LA:BAKKER</h3></center>
+            <h3>LA:BAKKER</h3>
         </nav>
     </header>
-    <main>
-        <article>
-            <h2>Del 2: Lagt til stilsett for lesbarhet</h2>
-            <time class="muted-text">November 12, 2024</time>
-            <p>Må nok være litt designer før man blir produktorientert og tenker på MVP-er og sånt. I dag har jeg:</p>
-            <ul>
-                <li>Lagt til noen stiler (CSS) for å øke lesbarheten.</li>
-                <li>Sentrert innholdet.</li>
-                <li>Lag til rette for responsivitet uten bruk av media queries men ved å bruke relative størrelser og <code>clamp()</code> i CSS.</li>
-            </ul> 
-            <p>Ny versjon ser sånn ut:</p>
-            <img src="./assets/img/del2_doc.png" width="100%" alt="Første versjon">
-            <hr>
-        </article>
+    
+    <main x-data="blogPosts()">
+        <!-- Post List -->
+        <h3>Siste artikler</h3>
+        <div class="post-list">
+            <!-- Dynamically list the posts -->
+            <template x-for="post in posts" :key="post.id">
+                <div class="post-item">
+                    <a href="#" @click.prevent="loadPost(post.url)" x-text="post.title"></a>
+                </div>
+            </template>
+        </div>
 
-        <article>
-            <h2>Del 1: Start av Prosjekt Minimalist</h2>
-            <time datetime="2024-11-11" class="muted-text">November 11, 2024</time>
-            <p>Jeg liker å ha små prosjekter hvor jeg kan lære om ting som jeg synes er interessante og meningsfulle. Mitt neste prosjekt er dette: 
-                <ol>
-                    <li>Starte en en blog der jeg skriver om ting som opptar meg.</li>
-                    <li>Bygge en blog-plattform selv, som en slags morsom meta-øvelse.</li>
-                </ol>
-                Hvorfor? Jeg synes rett og slett at det er gøy å skrive. Jeg synes også det er gøy med teknologi og å bygge ting selv. I tillegg har jeg en intuisjon og en hypotese om at dagens webapplikasjoner er for kompliserte. Jeg har lyst til å utforske en mer minimalistisk tilnærming, der jeg undersøker hvordan det er å skrive en webapplikasjon fra bunnen av, med minimal bruk av rammeverk og støttehjul. Kanskje tar jeg feil, kanskje trenger man en del bevegelige deler, men jeg tenker at det uansett blir et morsomt læringsprosjekt.
-            </p>
-
-            <h3>En slags første versjon – enklere blir det ikke.</h3>
-            <p>
-                Her er utgangspunktet for prosjektet, en av de enkleste måtene å få noe publisert på internett:
-                <ul>
-                    <li>Github Pages</li>
-                    <li>En html-side med grunnleggende semantisk html-markup</li>
-                </ul>
-            </p>
-
-            <h3>Hva nå?</h3>
-            <p>
-                Så kommer det store spørsmålet: Hva gjør jeg nå? Skal jeg:
-                <ol>
-                    <li>Ta på meg produktuviklerhatten og definere bestanddelene i et produkt som gir minste verdi? </li>
-                    <li>Være designeren som både vil ha et mer funksjonelt og lekkert uttrykk?</li>
-                    <li>Bli teknologen som vil ha smågodt og sikler både på headless CMS, React og Next.js? </li>
-                </ol> 
-                <p>Jeg må sove litt på det. Tenke meg litt om. Jeg tror du vet hvor det bærer. Alternativ 3 har jeg jo allerede utelukket, så da så.</p>
-            </p>
-
-            <h3>Dokumentasjon</h3>
-            <p>For å dokumentere fremdrift tenker jeg å ta bilde av all ny funksjonalitet slik at du kan følge med på endringene. Her er siden i første versjon:                
-            </p>
-            <img src="./assets/img/del1_doc.png" width="100%" alt="Første versjon">            
-        </article>
-        <hr>
+        <!-- Rendered Post Content -->
+        <div class="post-content" x-show="currentPostContent" x-html="currentPostContent"></div>
     </main>
+
+<script>
+const renderer = new marked.Renderer();
+
+// Customize image rendering
+renderer.image = (href, title, text) => {
+    const altText = href.text || '';
+    const imgTitle = href.title ? `title="${href.title}"` : '';
+    return `<div><img src="${href.href}" alt="${altText}" ${imgTitle} style="max-width:100%;height:auto;"></div>`;
+};
+
+// Use the custom renderer in Marked.js
+marked.setOptions({ renderer });
+    
+        function blogPosts() {
+            return {
+                // List of posts (titles and Markdown file paths)
+                posts: [           
+                
+                    { id: 3, title: "Del 3: Markdown og listing av artikler", url: "./posts/post3.md" },    
+                    { id: 2, title: "Del 2: Lagt til stilsett for lesbarhet", url: "./posts/post2.md" },    
+                    { id: 1, title: "Del 1: Start av Prosjekt Minimalist", url: "./posts/post1.md" },
+                ],
+                currentPostContent: '', // Content of the currently selected post
+
+                // Load and render a single post when clicked
+                loadPost(url) {
+                    this.currentPostContent = ''; // Clear current content
+                    fetch(url)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! Status: ${response.status}`);
+                            }
+                            return response.text();
+                        })
+                        .then(md => {
+                            this.currentPostContent = marked.parse(md); // Convert Markdown to HTML
+                        })
+                        .catch(error => {
+                            console.error(`Failed to load post: ${url}`, error);
+                            this.currentPostContent = '<p style="color: red;">Failed to load the post.</p>';
+                        });
+                },
+            };
+        }
+    </script>
 </body>
 </html>

@@ -1,7 +1,12 @@
+
 body {
     font-size: clamp(1rem, 1vw + 1rem, 1.5rem);
     line-height: 1.6; /* A good default for readability */
     color: #333333; /* Dark gray for main body text */
+}
+
+header {
+    text-align: center;
 }
 
 main {
@@ -41,6 +46,13 @@ hr {
     border-top: 2px solid #e2e0e0; /* Solid line with custom color */
     width: 80%;                 /* Set width */
     margin: 1em auto;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Optional: Prevent inline image issues */
+    margin: 0 auto; /* Optional: Center images */
 }
 
 .secondary-text {
