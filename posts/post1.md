@@ -29,4 +29,4 @@ Jeg må sove litt på det. Tenke meg litt om. Jeg tror du vet hvor det bærer. A
 ### Dokumentasjon
 For å dokumentere fremdrift tenker jeg å ta bilde av all ny funksjonalitet slik at du kan følge med på endringene. Her er siden i første versjon:
 
-![Test](../assets/img/del1_doc.png "Første versjon")
+![Test](./assets/img/del1_doc.png "Første versjon")
