@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gynforum</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config for extending default styles
+    tailwind.config = {
+      theme: {
+        extend: {
+          backgroundImage: {
+            'hero-pattern': "url('./img/hero.jpg')"
+          },
+          fontFamily: {
+            body: ['Inter', 'Sans serif'],
+          },
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="font-body antialiased text-gray-900 px-6 lg:px-12 bg-gradient-to-br from-purple-300 via-rose-300 to-amber-200">
+
+  <!-- Navbar -->
+  <nav class="">
+    <div class="relative mx-4 sm:mx-8 lg:mx-12 px-6 py-4 flex justify-between items-center">
+      <a href="#" class="text-2xl font-bold text-gray-800">Gyn:Forum</a>
+
+      <!-- Hamburger menu -->
+      <div class="lg:hidden">
+        <button id="menu-btn" class="text-gray-800 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Menu links -->
+      <div id="menu" class="hidden lg:flex space-x-6">
+        <a href="#" class="text-gray-800 hover:text-blue-600">Om oss</a>
+        <a href="#" class="text-gray-800 hover:text-blue-600">For helsepersonell</a>
+        <a href="#" class="text-gray-800 hover:text-blue-600">Hold deg oppdatert</a>
+        <a href="#" class="text-gray-800 hover:text-blue-600">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Sidebar -->
+  <!-- Sidebar -->
+<div id="sidebar" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden z-50">
+  <div class="bg-white h-full shadow-lg p-6">
+    <button id="close-sidebar" class="mb-4 text-gray-800 focus:outline-none">
+      Close
+    </button>
+    <ul>
+      <li class="mb-2"><a href="#" class="block text-gray-800 hover:text-blue-600">Om oss</a></li>
+      <li class="mb-2"><a href="#" class="block text-gray-800 hover:text-blue-600">For helsepersonell</a></li>
+      <li class="mb-2"><a href="#" class="block text-gray-800 hover:text-blue-600">Hold deg oppdatert</a></li>
+      <li class="mb-2"><a href="#" class="block text-gray-800 hover:text-blue-600">Kontakt</a></li>
+    </ul>
+  </div>
+</div>
+
+<section class="bg-hero-pattern bg-cover bg-center h-screen relative rounded-lg overflow-hidden mx-4 sm:mx-8 lg:mx-12 shadow-lg">
+  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center">
+    <div class="container mx-auto px-4">
+      <div class="text-left max-w-[800px] ml-4 sm:ml-6 lg:ml-12">
+        <h1 class="px-6 text-transparent bg-clip-text bg-gradient-to-l from-amber-300 to-purple-300 text-4xl lg:text-6xl font-bold" style="font-family: 'Bodoni Moda';">
+          Før timen din.
+        </h1>
+        <p class="px-6 text-gray-200 text-lg lg:text-2xl mt-4">
+          Når du først skal til gynekologisk undersøkelse vil du gjerne være forberedt, slik at du kan grue deg mindre og få mer ut av timen
+        </p>
+
+        <div class="bg-opacity-30 backdrop-blur-lg rounded-lg p-6 mt-12 shadow-lg">
+          <!-- Header -->
+          <h2 class="text-white text-3xl font-bold mb-2" style="font-family: 'Bodoni Moda';">
+            Hold deg oppdatert!
+          </h2>
+          
+          <!-- Email Capture Form -->
+          <form action="#" method="POST" class="flex flex-col sm:flex-row items-center gap-4">
+            <input type="email" name="email" required
+              class="w-full sm:w-auto flex-grow px-4 py-3 text-gray-900 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 mb-6"
+              placeholder="Enter your email address">
+            <button type="submit"
+              class="px-6 py-3 bg-purple-500 text-white font-semibold text-lg rounded-lg hover:bg-purple-600 mb-6">
+              Send inn
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relative mx-4 sm:mx-8 lg:mx-12 rounded-lg bg-white bg-opacity-30 backdrop-blur-lg mt-8 bg-white py-16 px-6 overflow-hidden">
+  <!-- Carousel Container -->
+  <div id="carousel" class="relative w-full h-full">
+    <!-- Slides -->
+    <div class="carousel-slides flex transition-transform duration-1000 ease-in-out">
+      <!-- Slide 1 -->
+      <div class="carousel-slide w-full flex-shrink-0 text-center">
+        <h2 class="text-gray-900 text-3xl font-bold mb-4" style="font-family: 'Bodoni Moda';">
+          Utforsk Mer
+        </h2>
+        <p class="text-gray-700 text-lg lg:text-xl">
+          Lær mer om hvordan du kan forberede deg til din gynekologiske time. Vi tilbyr informasjon og ressurser for å hjelpe deg å føle deg trygg og informert.
+        </p>
+      </div>
+      <!-- Slide 2 -->
+      <div class="carousel-slide w-full flex-shrink-0 text-center">
+        <h2 class="text-gray-900 text-3xl font-bold mb-4" style="font-family: 'Bodoni Moda';">
+          Din Helsepartner
+        </h2>
+        <p class="text-gray-700 text-lg lg:text-xl">
+          Oppdag ressurser som dekker alt fra forberedelse til undersøkelse, til etterbehandling og oppfølging.
+        </p>
+      </div>
+      <!-- Slide 3 -->
+      <div class="carousel-slide w-full flex-shrink-0 text-center">
+        <h2 class="text-gray-900 text-3xl font-bold mb-4" style="font-family: 'Bodoni Moda';">
+          Eksklusive Tips
+        </h2>
+        <p class="text-gray-700 text-lg lg:text-xl">
+          Les om hvordan du kan redusere stress og få en bedre opplevelse av timen din.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="flex justify-center space-x-3 mt-6">
+    <button class="carousel-btn w-4 h-4 bg-gray-100 rounded-full focus:outline-none" data-slide="0"></button>
+    <button class="carousel-btn w-4 h-4 bg-gray-100 rounded-full focus:outline-none" data-slide="1"></button>
+    <button class="carousel-btn w-4 h-4 bg-gray-100 rounded-full focus:outline-none" data-slide="2"></button>
+  </div>
+</section>
+
+<section class="relative mx-4 sm:mx-8 lg:mx-12 mt-8 rounded-lg bg-white bg-opacity-30 backdrop-blur-lg py-16 px-6">
+  <div class="text-center">
+    <!-- Large Heading -->
+    <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style="font-family: 'Bodoni Moda';">
+      Utforsk Våre Ressurser
+    </h2>
+    <!-- Paragraph -->
+    <p class="text-lg lg:text-xl text-gray-800 max-w-[800px] mx-auto mb-8">
+      Før man skal til gynekologisk undersøkelse for noen tilstander er man kanskje ekstra spent, eller det kan være nyttig å forberede seg ekstra.
+    </p>
+    <p class="text-lg lg:text-xl text-gray-800 max-w-[800px] mx-auto mb-8">Her har vi samlet informasjon for noen tilstander det kan være lurt å vite litt om før timen.</p>
+  </div>
+
+  <!-- Card Grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Card 1 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="./img/celleforandringer.jpg" alt="Celleforandringer" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">Celleforandringer</h3>
+        <p class="text-gray-700 text-sm mt-2">Tips og råd for å forberede deg før undersøkelsen.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="./img/menopause.jpg" alt="Menopause" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">Overgangsalderen</h3>
+        <p class="text-gray-700 text-sm mt-2">Lær mer om hetetokter, humørsvingninger og søvnforstyrrelser.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="./img/pms.jpg" alt="PMS/PMDD" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">PMS/PMDD</h3>
+        <p class="text-gray-700 text-sm mt-2">Les mer om de emosjonelle og fysiske plagene ved PMS og PMDD.</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="./img/urin.jpg" alt="Urinlekkasje" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">Urinlekkasje</h3>
+        <p class="text-gray-700 text-sm mt-2">Les mer om symptomer og behandling av denne vanlige lidelsen.</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="https://via.placeholder.com/300x150" alt="Card 5 Image" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">Endometriose</h3>
+        <p class="text-gray-700 text-sm mt-2">Kan jeg ha endometriose? Les mer om symptomer og behandling.</p>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="rounded-lg shadow-lg bg-white overflow-hidden">
+      <img src="https://via.placeholder.com/300x150" alt="Card 6 Image" class="w-full h-48 object-cover">
+      <div class="p-4">
+        <h3 class="text-xl font-semibold text-gray-900">Fremfall</h3>
+        <p class="text-gray-700 text-sm mt-2">Lær mer om fremfall og hva tilstanden skyldes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="relative mx-4 sm:mx-8 lg:mx-12 rounded-lg mt-8 p-6 bg-opacity-50 backdrop-blur-md">
+  <div class="text-center">
+    <!-- Footer Text -->
+    <p class="text-purple-800 text-sm font-semibold">© 2024 GynForum. All rights reserved.</p>
+    <!-- Footer Links -->
+    <div class="mt-4 space-x-4">
+      <a href="#" class="text-blue-800 hover:text-blue-600 font-medium">Privacy Policy</a>
+      <a href="#" class="text-blue-800 hover:text-blue-600 font-medium">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+  <script>
+    // Toggle menu
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeSidebar = document.getElementById('close-sidebar');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.remove('hidden');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+      sidebar.classList.add('hidden');
+    });
+
+    const carousel = document.querySelector('.carousel-slides');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const buttons = document.querySelectorAll('.carousel-btn');
+  let currentIndex = 0;
+
+  const goToSlide = (index) => {
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+    currentIndex = index;
+    updateButtons();
+  };
+
+  const updateButtons = () => {
+    buttons.forEach((button, index) => {
+      button.classList.toggle('bg-purple-200', index === currentIndex);
+      button.classList.toggle('bg-gray-100', index !== currentIndex);
+    });
+  };
+
+  // Auto-play carousel
+  const autoPlay = () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    goToSlide(currentIndex);
+  };
+
+  let autoPlayInterval = setInterval(autoPlay, 5000);
+
+  // Add event listeners for buttons
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      clearInterval(autoPlayInterval); // Stop autoplay on manual interaction
+      goToSlide(index);
+      autoPlayInterval = setInterval(autoPlay, 5000); // Restart autoplay
+    });
+  });
+
+  // Initialize carousel
+  goToSlide(0);
+
+</script>
+  
+
+</body>
+
+</html>
